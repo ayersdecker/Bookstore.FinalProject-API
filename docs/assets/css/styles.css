@@ -81,17 +81,28 @@
   #about h2 {
     font-size: 36px;
     margin-bottom: 20px;
+    margin-left: 5%;
   }
   #links {
         padding: 50px 20px;
-        
         background-color: #fff;
-        text-decoration: none;
       
   }
   #links h2 {
     font-size: 36px;
     margin-bottom: 20px;
+  }
+  #links ul {
+    margin-left: 5%;
+    list-style: square;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+  #links li a{
+    padding: 5px;
+    color: #111;
+    margin: 10px;
+    text-decoration: underline;
   }
 
   
