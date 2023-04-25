@@ -1,5 +1,7 @@
 ## NMAD262.FinalProject-API 
-NMAD 262: Web Services &amp; Data Storage Tech. Final Project - API - BookStore Service
+NMAD 262: Web Services &amp; Data Storage Technology Final Project - API - Bookstore Service
+
+- - - -
 
 # Bookstore API
 The Bookstore API is a web API designed to provide a platform for students to buy and sell books to one another. The API is designed with scalability in mind, utilizing MySQL for the database and Azure for cloud services. The API is built using C# and .NET, making it easily accessible to developers.
@@ -14,7 +16,7 @@ The Bookstore API includes the following features:
 * Patron management
 * Payment processing with PayPal
 * Filtering system for book search
-* Image storage with cloud data storage providers such as AWS s3 bucket, Azure blob, etc.
+* Image storage with cloud data storage provider Azure
 * Documentation for the API with API documentation, endpoints, and parameters
 
 > ## Requirements
@@ -34,8 +36,12 @@ To install the Bookstore API, follow these steps:
 
 3. Restore NuGet packages
 
-4. Update the appsettings.json file with your database connection string, Azure storage account name and key, and PayPal account details
-
+4. Update the appsettings.json file with your database connection string, Azure storage account name and key, and PayPal account details 
+``` 
+"ConnectionStrings": {
+    "mysqldbcredential": "Server=localhost;Database=booklibrary;User Id=root;Password=;"
+  }
+```
 5. Build and run the project
 
 > ## Usage
@@ -84,10 +90,12 @@ GET /api/transactions: Get a list of all transactions.
 
 GET /api/transactions/{id}: Get a transaction by ID.
 
+- - - -
 
 > ## Credits
 
 The Bookstore API was developed by Decker Ayers.
+
 
 > ## License
 
