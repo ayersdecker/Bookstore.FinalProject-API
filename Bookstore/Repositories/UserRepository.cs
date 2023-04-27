@@ -1,9 +1,11 @@
 ﻿using System.Data;
-using BookStoreAPI.Databases;
-using BookStoreAPI.Models;
+using Bookstore.Databases;
+using Bookstore.Models;
+using Bookstore.Databases;
+using Bookstore.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace BookStoreAPI.Repositories;
+namespace Bookstore.Repositories;
 
 public class UserRepository
 {

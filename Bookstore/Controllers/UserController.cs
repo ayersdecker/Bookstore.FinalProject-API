@@ -1,14 +1,19 @@
-﻿using BookStoreAPI.Models;
-using BookStoreAPI.Repositories;
+﻿using Bookstore.Models;
+using Bookstore.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BookStoreAPI.Controllers;
+namespace BookStore.Controllers;
 
 [ApiController]
-[Route("api/users/")]
+[Route("api/users")]
 public class UserController : ControllerBase
 {
     private readonly UserRepository _repository;
+
+    public UserController(UserRepository repository)
+    {
+        _repository = repository;
+    }
     [HttpGet("{id}")]
     public async Task<ActionResult> Get(int id) { return Ok(await this._repository.Get(id)); }
     [HttpGet]
