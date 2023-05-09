@@ -23,6 +23,8 @@ public class Book
     [Column("course_id")]
     public int CourseID { get; set; }
     [NotMapped]
+    public List<Patron> Interested { get; set; }
+    [NotMapped]
     public double Price { get; set; }
     [NotMapped]
     public string Image { get; set; }

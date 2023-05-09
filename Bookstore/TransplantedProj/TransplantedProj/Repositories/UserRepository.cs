@@ -1,7 +1,6 @@
 ﻿using System.Data;
-using Bookstore.Databases;
 using Bookstore.Models;
-using Bookstore.Databases;
+using TransplantedProj.Databases;
 using Bookstore.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,13 +9,70 @@ namespace Bookstore.Repositories;
 public class UserRepository
 {
     public DbSet<User> Users;
+    public DbSet<Book> Books;
+    public DbSet<Transaction> Trans;
     public DbContext Context;
-    public UserRepository(MySQLDatabase context) { this.Context = context; this.Users = context.Users; }
+    public UserRepository(MySQLDatabase context) { this.Context = context; this.Users = context.Users; this.Books = context.Books; this.Trans = context.Transactions; }
     public async Task<IEnumerable<User>> GetAll() { return await this.Users.ToArrayAsync(); }
     public async Task<User> Get(int id)
     {
         foreach (var VARIABLE in Users) { if (VARIABLE.ID == id) { return VARIABLE; } }
         throw new Exception("No User with ID Found");
+    }
+    public async Task<List<Book>> GetSelling(int id)
+    {
+        List<Book> books = new List<Book>();
+        foreach (var VARIABLE in Books)
+        {
+            if (VARIABLE.SellerID == id)
+            {
+                books.Add(VARIABLE);
+            }
+        }
+
+        foreach (var VARIABLE in Trans)
+        {
+            if (VARIABLE.SellerID == id)
+            {
+                foreach (var brr in Books)
+                {
+                    if (VARIABLE.BookID == brr.ID)
+                    {
+                        books.Add(brr);
+                    }
+                }
+            }   
+        }
+
+        if (books.Count > 0)
+        {
+            return books;
+        }
+        throw new Exception("No books were sold");
+    }
+    public async Task<List<Book>> GetBought(int id)
+    {
+        List<Book> books = new List<Book>();
+
+        foreach (var VARIABLE in Trans)
+        {
+            if (VARIABLE.BuyerID == id)
+            {
+                foreach (var brr in Books)
+                {
+                    if (VARIABLE.BookID == brr.ID)
+                    {
+                        books.Add(brr);
+                    }
+                }
+            }   
+        }
+
+        if (books.Count > 0)
+        {
+            return books;
+        }
+        throw new Exception("No books were bought");
     }
     public async Task<User> Create(User user)
     {

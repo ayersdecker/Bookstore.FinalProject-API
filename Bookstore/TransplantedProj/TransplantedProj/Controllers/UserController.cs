@@ -16,6 +16,10 @@ public class UserController : ControllerBase
     }
     [HttpGet("{id}")]
     public async Task<ActionResult> Get(int id) { return Ok(await this._repository.Get(id)); }
+    [HttpGet("{id}/bought")]
+    public async Task<ActionResult> GetBought(int id) { return Ok(await this._repository.GetBought(id)); }
+    [HttpGet("{id}/sold")]
+    public async Task<ActionResult> GetSelling(int id) { return Ok(await this._repository.GetSelling(id)); }
     [HttpGet]
     public async Task<ActionResult> GetAll() { return Ok(await this._repository.GetAll()); }
     [HttpPost]
