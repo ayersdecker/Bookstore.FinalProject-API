@@ -56,6 +56,10 @@ POST /api/users/login: Log in an existing user.
 
 GET /api/users/{id}: Get a user by ID.
 
+GET /api/users/{id}/selling: Get specified user's selling history
+
+GET /api/users/{id}/bought: Get specified user's buying history
+
 PUT /api/users/{id}: Update a user's profile by ID.
 
 ### Book Endpoints
@@ -70,7 +74,11 @@ PUT /api/books/{id}: Update a book's details by ID.
 
 DELETE /api/books/{id}: Remove a book from the bookstore by ID.
 
-### Patron Endpoints
+### Course Endpoints
+
+GET /api/courses: Returns all listed courses (w/ associated keys)
+
+### Patron Endpoints [REDACTED]
 
 POST /api/patrons: Add a new patron to a book.
 
